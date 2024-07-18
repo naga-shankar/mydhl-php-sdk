@@ -12,16 +12,26 @@ class Address
      * @throws InvalidAddressException
      */
     public function __construct(
-        protected string $addressLine1,
-        protected string $countryCode,
-        protected string $postalCode,
-        protected string $cityName,
-        protected string $addressLine2 = '',
-        protected string $addressLine3 = '',
-        protected string $countyName = '',
-        protected string $provinceCode = ''
+         string $addressLine1,
+         string $countryCode,
+         string $postalCode,
+         string $cityName,
+          $addressLine2 = '',
+         string $addressLine3 = '',
+         string $countyName = '',
+         string $provinceCode = ''
     ) {
+        $this->countryCode = $countryCode;
         $this->countryCode = strtoupper($this->countryCode);
+        $this->addressLine1 = $addressLine1;
+        $this->postalCode = $postalCode;
+        $this->cityName = $cityName;
+        $this->addressLine2 = $addressLine2;
+        $this->addressLine3 = $addressLine3;
+        $this->countyName = $countyName;
+        $this->provinceCode = $provinceCode;
+        $this->provinceCode = $provinceCode;
+
 
         $this->validateData();
     }

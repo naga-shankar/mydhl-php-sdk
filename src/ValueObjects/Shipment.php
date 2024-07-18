@@ -9,17 +9,28 @@ use Sonnenglas\MyDHL\Exceptions\InvalidAddressException;
 class Shipment
 {
     public function __construct(
-        private string $shipmentTrackingNumber,
-        private string $cancelPickupUrl,
-        private string $trackingUrl,
-        private string $dispatchConfirmationNumber,
-        private string $labelPdf,
-        private array $warnings = [],
-        private array $packages = [],
-        private array $documents = [],
-        private array $shipmentDetails = [],
-        private array $shipmentCharges = [],
+         string $shipmentTrackingNumber,
+         string $cancelPickupUrl,
+         string $trackingUrl,
+         string $dispatchConfirmationNumber,
+         string $labelPdf,
+         array $warnings = [],
+         array $packages = [],
+         array $documents = [],
+         array $shipmentDetails = [],
+         array $shipmentCharges = []
     ) {
+        $this->shipmentTrackingNumber = $shipmentTrackingNumber;
+        $this->cancelPickupUrl = $cancelPickupUrl;
+        $this->dispatchConfirmationNumber = $dispatchConfirmationNumber;
+        $this->labelPdf = $labelPdf;
+        $this->warnings = $warnings;
+        $this->packages = $packages;
+        $this->documents = $documents;
+        $this->shipmentDetails = $shipmentDetails;
+        $this->shipmentCharges = $shipmentCharges;
+
+
     }
 
     /**

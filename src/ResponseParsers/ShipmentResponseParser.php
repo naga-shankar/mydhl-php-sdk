@@ -11,23 +11,24 @@ class ShipmentResponseParser
 {
     use GetRawResponse;
 
-    public function __construct(private array $response)
+    public function __construct( array $response)
     {
+        $this->response = $response;
     }
 
     public function parse(): Shipment
     {
         return new Shipment(
-            shipmentTrackingNumber: $this->response['shipmentTrackingNumber'],
-            cancelPickupUrl: $this->response['cancelPickupUrl'],
-            trackingUrl: $this->response['trackingUrl'],
-            dispatchConfirmationNumber: $this->response['dispatchConfirmationNumber'],
-            labelPdf: $this->getLabelPdf($this->response),
-            warnings: $this->response['warnings'] ?? [],
-            packages: $this->response['packages'] ?? [],
-            documents: $this->response['documents'] ?? [],
-            shipmentDetails: $this->response['shipmentDetails'] ?? [],
-            shipmentCharges: $this->response['shipmentCharges'] ?? [],
+             $this->response['shipmentTrackingNumber'],
+             $this->response['cancelPickupUrl']??"",
+             $this->response['trackingUrl'],
+             $this->response['dispatchConfirmationNumber']??"",
+             $this->getLabelPdf($this->response),
+             $this->response['warnings'] ?? [],
+             $this->response['packages'] ?? [],
+             $this->response['documents'] ?? [],
+             $this->response['shipmentDetails'] ?? [],
+             $this->response['shipmentCharges'] ?? []
         );
     }
 

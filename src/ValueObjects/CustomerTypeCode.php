@@ -22,8 +22,9 @@ class CustomerTypeCode
      * @throws InvalidArgumentException
      */
     public function __construct(
-        private string $typeCode,
+         string $typeCode
     ) {
+        $this->typeCode = $typeCode;
         $this->validate($this->typeCode);
     }
 

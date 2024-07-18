@@ -8,13 +8,25 @@ use Sonnenglas\MyDHL\Exceptions\InvalidAddressException;
 
 class Contact
 {
+    /**
+     * @param string $phone
+     * @param string $companyName
+     * @param string $fullName
+     * @param string $email
+     * @param string $mobilePhone
+     */
     public function __construct(
-        protected string $phone,
-        protected string $companyName,
-        protected string $fullName,
-        protected string $email = '',
-        protected string $mobilePhone = '',
+         string $phone,
+         string $companyName,
+         string $fullName,
+         string $email = '',
+         string $mobilePhone = ''
     ) {
+        $this->phone = $phone;
+        $this->companyName = $companyName;
+        $this->fullName = $fullName;
+        $this->email = $email;
+        $this->mobilePhone = $mobilePhone;
     }
 
     /**

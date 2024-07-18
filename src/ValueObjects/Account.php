@@ -11,13 +11,15 @@ class Account
     private const ALLOWED_TYPE_CODES = [
         "shipper",
         "payer",
-        "duties-taxes",
+        "duties-taxes"
     ];
 
     public function __construct(
-        private string $typeCode,
-        private string $number,
+         string $typeCode,
+         string $number
     ) {
+        $this->typeCode = $typeCode;
+        $this->number = $number;
         $this->validateData();
     }
 

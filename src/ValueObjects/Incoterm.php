@@ -27,8 +27,9 @@ class Incoterm
      * @throws InvalidArgumentException
      */
     public function __construct(
-        private string $incoterm,
+         string $incoterm
     ) {
+        $this->incoterm = $incoterm;
         $this->validate($this->incoterm);
     }
 

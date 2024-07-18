@@ -72,14 +72,16 @@ class ShipmentService
     private const CREATE_SHIPMENT_URL = 'shipments';
 
 
-    public function __construct(private Client $client)
+    public function __construct( Client $client)
     {
+        $this->client = $client;
     }
 
     public function createShipment(): Shipment
     {
         $this->validateParams();
         $query = $this->prepareQuery();
+    //    print_R($query);exit;
         $this->lastResponse = $this->client->post(self::CREATE_SHIPMENT_URL, $query);
         return (new ShipmentResponseParser($this->lastResponse))->parse();
     }
@@ -298,6 +300,9 @@ class ShipmentService
             $query['pickup']['pickupDetails'] = [
                 'postalAddress' => $this->pickupAddress->getAsArray(),
                 'contactInformation' => $this->pickupContact->getAsArray(),
+            ];
+        } else{
+            $query['pickup'] = [ "isRequested" => false
             ];
         }
 

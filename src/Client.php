@@ -21,10 +21,14 @@ class Client
     protected string $lastMessageReference;
 
     public function __construct(
-        protected string $username,
-        protected string $password,
-        protected bool $testMode
+          $username,
+          $password,
+          $testMode
     ) {
+        $this->testMode = $testMode;
+        $this->password = $password;
+        $this->username = $username;
+
         $this->baseUri = $this->testMode ? self::URI_TEST : self::URI_PRODUCTION;
     }
 
@@ -61,8 +65,9 @@ class Client
         $httpClient = new GuzzleClient();
 
         $options = $this->getRequestOptions('POST', $query);
+      
+            $response = $httpClient->request('POST', $uri, $options);
 
-        $response = $httpClient->request('POST', $uri, $options);
 
         return json_decode((string) $response->getBody(), true);
     }
