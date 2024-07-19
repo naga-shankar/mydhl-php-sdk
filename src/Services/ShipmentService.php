@@ -229,6 +229,11 @@ class ShipmentService
 
         return $this;
     }
+    public function setUnitOfMeasurement(string $unitOfMeasurement): self
+    {
+        $this->unitOfMeasurement = $unitOfMeasurement;
+        return $this;
+    }
 
     public function setValueAddedServices(array $valueAddedServices): self
     {
